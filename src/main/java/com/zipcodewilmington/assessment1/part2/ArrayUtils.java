@@ -1,10 +1,7 @@
 package com.zipcodewilmington.assessment1.part2;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by leon on 2/16/18.
@@ -40,12 +37,10 @@ public class ArrayUtils {
      */
     public static Object[] removeValue(Object[] objectArray, Object objectToRemove) {
         List objList = Arrays.asList(objectArray);
-        for(int i = 0; i < objList.size(); i++){
-            if(objList.get(i) == objectToRemove){
-                objList.remove(i);
-            }
-        }
-        return objList.toArray();
+        ArrayList<Object> updatedList = new ArrayList<>(objList);
+        updatedList.remove(objectToRemove);
+
+        return updatedList.toArray();
     }
 
     /**
@@ -93,8 +88,12 @@ public class ArrayUtils {
      */
     public static Object[] mergeArrays(Object[] objectArray, Object[] objectArrayToAdd) {
         Object[] combined = new Object[objectArray.length + objectArrayToAdd.length];
-        System.arraycopy(objectArray, 0, combined, 0, objectArray.length);
-        System.arraycopy(objectArrayToAdd, 0, combined, objectArray.length, objectArrayToAdd.length);
+        for(int i = 0; i < objectArray.length-1;i++) {
+            combined[i] = objectArray[i];
+        }
+        for(int i =0 ; i < objectArrayToAdd.length ; i++){
+            combined[objectArray.length ] = objectArrayToAdd[i];
+        }
 
         return combined;
     }

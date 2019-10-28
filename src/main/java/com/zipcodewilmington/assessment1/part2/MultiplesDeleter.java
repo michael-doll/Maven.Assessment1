@@ -1,5 +1,8 @@
 package com.zipcodewilmington.assessment1.part2;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  * Created by leon on 2/16/18.
  */
@@ -9,8 +12,14 @@ public class MultiplesDeleter {
      * @return all ints which are not divisible by 2
      * given an array of integers, named `ints` return an identical array with evens removed
      */
-    public Integer[] deleteEvens(Integer[] ints) {
-        return null;
+    public Integer[] deleteEvens(Integer[] ints){
+        ArrayList<Integer> intsList = (ArrayList<Integer>) Arrays.asList(ints);
+        for(int i =0; i < intsList.size(); i++){
+            if(intsList.get(i) %2 != 0){
+                intsList.remove(intsList.get(i));
+            }
+        }
+        return (Integer[])intsList.toArray();
     }
 
     /**
