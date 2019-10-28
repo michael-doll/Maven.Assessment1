@@ -1,5 +1,11 @@
 package com.zipcodewilmington.assessment1.part2;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Created by leon on 2/16/18.
  */
@@ -11,7 +17,19 @@ public class ArrayUtils {
      * Given an array of objects, named `objectArray`, and an object `objectToCount`, return the number of times the `objectToCount` appears in the `objectArray`
      */
     public static Integer getNumberOfOccurrences(Object[] objectArray, Object objectToCount) {
-        return null;
+        // re evaluate, try without two loops
+        int count =0 ;
+        for(int i =0; i < objectArray.length; i++){
+            if(objectArray[i] == objectToCount) {
+                for (int j = i; j < objectArray.length; j++){
+                    if(objectArray[j] == objectToCount){
+                        count++;
+                    }
+                }
+                break;
+            }
+        }
+        return count;
     }
 
     /**
@@ -21,7 +39,13 @@ public class ArrayUtils {
      * Given an array of objects, name `objectArray`, and an object `objectToRemove`, return an array of objects with identical contents excluding `objectToRemove`
      */
     public static Object[] removeValue(Object[] objectArray, Object objectToRemove) {
-        return null;
+        List objList = Arrays.asList(objectArray);
+        for(int i = 0; i < objList.size(); i++){
+            if(objList.get(i) == objectToRemove){
+                objList.remove(i);
+            }
+        }
+        return objList.toArray();
     }
 
     /**
@@ -30,7 +54,16 @@ public class ArrayUtils {
      * given an array of objects, named `objectArray` return the most frequently occuring object in the array
      */
     public static Object getMostCommon(Object[] objectArray) {
-        return null;
+        int bigGuy = 0;
+        Object freq = objectArray[0];
+        for (int i =0; i < objectArray.length; i++){
+            int currentCount = getNumberOfOccurrences(objectArray,objectArray[i]);
+           if(currentCount > bigGuy){
+               bigGuy = currentCount;
+               freq = objectArray[i];
+           }
+        }
+        return freq;
     }
 
 
@@ -40,7 +73,16 @@ public class ArrayUtils {
      * given an array of objects, named `objectArray` return the least frequently occuring object in the array
      */
     public static Object getLeastCommon(Object[] objectArray) {
-        return null;
+        int littleGuy = objectArray.length;
+        Object freq = objectArray[0];
+        for (int i =0; i < objectArray.length; i++){
+            int currentCount = getNumberOfOccurrences(objectArray,objectArray[i]);
+            if(currentCount < littleGuy){
+                littleGuy = currentCount;
+                freq = objectArray[i];
+            }
+        }
+        return freq;
     }
 
     /**
@@ -50,6 +92,10 @@ public class ArrayUtils {
      * given two arrays `objectArray` and `objectArrayToAdd`, return an array containing all elements in `objectArray` and `objectArrayToAdd`
      */
     public static Object[] mergeArrays(Object[] objectArray, Object[] objectArrayToAdd) {
-        return null;
+        Object[] combined = new Object[objectArray.length + objectArrayToAdd.length];
+        System.arraycopy(objectArray, 0, combined, 0, objectArray.length);
+        System.arraycopy(objectArrayToAdd, 0, combined, objectArray.length, objectArrayToAdd.length);
+
+        return combined;
     }
 }
