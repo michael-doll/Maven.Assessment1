@@ -1,27 +1,34 @@
 package com.zipcodewilmington.assessment1.part3;
 
+import com.zipcodewilmington.assessment1.part2.ArrayUtils;
+
 /**
  * Created by leon on 2/16/18.
  */
 public class PetOwner {
+    String name;
+    Pet[] pets;
+
     /**
      * @param name name of the owner of the Pet
      * @param pets array of Pet object
      */
     public PetOwner(String name, Pet... pets) {
+        this.name = name;
+        this.pets = pets;
     }
 
     /**
      * @param pet pet to be added to the composite collection of Pets
      */
     public void addPet(Pet pet) {
+
     }
 
     /**
      * @param pet pet to be removed from the composite collection Pets
      */
     public void removePet(Pet pet) {
-
     }
 
     /**
@@ -53,9 +60,7 @@ public class PetOwner {
     /**
      * @return the sum of ages of Pet objects stored in this class divided by the number of Pet object
      */
-    public Float getAveragePetAge() {
-        return null;
-    }
+    public Float getAveragePetAge() { return null; }
 
     /**
      * @return the number of Pet objects stored in this class
