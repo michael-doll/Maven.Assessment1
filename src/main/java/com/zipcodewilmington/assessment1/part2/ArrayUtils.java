@@ -1,6 +1,5 @@
 package com.zipcodewilmington.assessment1.part2;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -36,11 +35,19 @@ public class ArrayUtils {
      * Given an array of objects, name `objectArray`, and an object `objectToRemove`, return an array of objects with identical contents excluding `objectToRemove`
      */
     public static Object[] removeValue(Object[] objectArray, Object objectToRemove) {
-        List objList = Arrays.asList(objectArray);
-        ArrayList<Object> updatedList = new ArrayList<>(objList);
-        updatedList.remove(objectToRemove);
+        ArrayList updatedList = new ArrayList<>();
+        for(int i =0; i < objectArray.length;i++){
+            if(!objectArray[i].equals(objectToRemove)) {
+                updatedList.add(objectArray[i]);
+            }
+        }
+        Integer[] returnArr = new Integer[updatedList.size()];
+        for(int i =0; i < updatedList.size(); i++){
+            returnArr[i] = (Integer)updatedList.get(i);
+        }
 
-        return updatedList.toArray();
+
+        return returnArr;
     }
 
     /**
@@ -87,14 +94,17 @@ public class ArrayUtils {
      * given two arrays `objectArray` and `objectArrayToAdd`, return an array containing all elements in `objectArray` and `objectArrayToAdd`
      */
     public static Object[] mergeArrays(Object[] objectArray, Object[] objectArrayToAdd) {
-        Object[] combined = new Object[objectArray.length + objectArrayToAdd.length];
-        for(int i = 0; i < objectArray.length-1;i++) {
-            combined[i] = objectArray[i];
+        Integer[] combined = new Integer[objectArray.length + objectArrayToAdd.length];
+        for(int i = 0; i < objectArray.length;i++) {
+            combined[i] = (Integer)objectArray[i];
         }
-        for(int i =0 ; i < objectArrayToAdd.length ; i++){
-            combined[objectArray.length ] = objectArrayToAdd[i];
+        for(int i =combined.length-1; i >=objectArrayToAdd.length  ; i--){
+            combined[i] = (Integer)objectArrayToAdd[i - objectArrayToAdd.length ];
         }
 
         return combined;
     }
+
+
+
 }
