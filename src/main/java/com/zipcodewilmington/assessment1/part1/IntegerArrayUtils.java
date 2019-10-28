@@ -21,7 +21,7 @@ public class IntegerArrayUtils {
      * @return the product of `intArray`
      */
     public static Integer getProduct(Integer[] intArray) {
-        int product =0;
+        int product =1;
         for(int i =0; i < intArray.length;i++){
             product *= intArray[i];
         }
